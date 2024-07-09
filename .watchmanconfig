@@ -1,0 +1,11 @@
+{
+  "roots": [
+    "/src"
+  ],
+  "ignore_dirs": [
+    "/node_modules"
+  ],
+  "sane": {
+    "limit": 100000
+  }
+}
