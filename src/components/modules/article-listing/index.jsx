@@ -1,10 +1,10 @@
 import { memo, useEffect, useState } from 'react';
 
 import ArticleTile from '../../ui/article-tile';
-import { getArticleList } from '../../../services/article';
-import { apiInit } from '../../../helpers/interfaces';
 import Modal from '../../ui/modal';
 import ArticleDetials from '../article-details';
+import { apiInit } from '../../../helpers/interfaces';
+import { getArticleList } from '../../../services/article';
 
 const ArticleListing = () => {
   const [articles, setArticles] = useState(apiInit);
