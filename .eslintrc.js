@@ -1,5 +1,8 @@
 module.exports = {
   extends: 'get-off-my-lawn',
+  ignorePatterns: [
+    'cypress/',
+  ],
   rules: {
     // enable additional rules, override rule options, or disable rules
     'brace-style': 'off',
