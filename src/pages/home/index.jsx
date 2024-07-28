@@ -1,18 +1,29 @@
 import React from 'react';
 
 import ArticleListing from '../../components/modules/article-listing';
+import Heading from '../../components/ui/heading';
+import ListingPageFilters from '../../components/ui/listing-page-filters';
 
 const Home = () =>
-  <div className="w-[1000px] mx-auto mt-[50px] bg-gray-50 p-4 rounded">
-
-    {/* Top Heading */}
-    <div className="sticky -top-4 mb-6 z-10 flex justify-between">
-      <h1 className=" text-2xl font-semibold">{'NY Times Most Popular Articles '}</h1>
+  <div className="container lg:my-6 my-2">
+    <div className="flex justify-end md:hidden md:mb-6 mb-4">
+      <ListingPageFilters />
     </div>
 
     {/* Listing Area */}
-    <div className=" h-[calc(100vh-250px)] overflow-y-scroll ">
-      <ArticleListing />
+    <div>
+      <Heading title="Sports News" />
+      <ArticleListing category="technology" isCard />
+    </div>
+
+    <div className="mt-12">
+      <Heading title="Entertainment World" />
+      <ArticleListing category="entertainment" />
+    </div>
+
+    <div className="mt-12">
+      <Heading title="Science Information" />
+      <ArticleListing category="science" isCard />
     </div>
   </div>;
 

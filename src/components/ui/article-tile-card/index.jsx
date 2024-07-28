@@ -1,17 +1,17 @@
 
 import { memo } from 'react';
 
-const ArticleTile = ({ data, setSelectedArticle }) => {
+const ArticleTileCard = ({ data, setSelectedArticle }) => {
   const { urlToImage, title, content, publishedAt } = data;
 
   return (
     <article>
       <button className="block w-full text-left" data-testid="tile-button" onClick={() => setSelectedArticle(data)} type="button">
-        <span className="p-4 block bg-white relative pl-32 min-h-[136px] rounded overflow-hidden">
-          <span className="absolute top-0 left-0 w-28 h-full bg-[#f5f5f5]">
+        <span className="block bg-white rounded overflow-hidden">
+          <span className="w-full h-[153px]  bg-[#f5f5f5] mb-4 block">
             {
               urlToImage ?
-                <img alt="Thumbnail" className="w-full h-full object-cover" data-testid="tile-thumbnail" src={urlToImage} />
+                <img alt="Thumbnail" className="w-full h-[153px]  object-cover" data-testid="tile-thumbnail" src={urlToImage} />
                 : undefined
             }
           </span>
@@ -27,4 +27,4 @@ const ArticleTile = ({ data, setSelectedArticle }) => {
   );
 };
 
-export default memo(ArticleTile);
+export default memo(ArticleTileCard);

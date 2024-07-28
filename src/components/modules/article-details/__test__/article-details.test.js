@@ -1,32 +1,39 @@
-
+// ArticleDetails.test.js
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ArticleDetails from '../index';
 
+import ArticleDetails from '..';
+
+// Mock data for the test
 const testData = {
-  id: 1,
-  media: [{ 'media-metadata': [{ url: 'mockImageUrl' }, { url: 'mockImageUrl' }, { url: 'mockImageUrl' }] }],
+  author: 'Creator Name',
+  content: 'This is a test article.',
+  publishedAt: '2024-07-09',
   title: 'Test Article',
-  abstract: 'This is a test article.',
-  published_date: '2024-07-09',
-  byline: 'creater name and yes hello',
+  urlToImage: 'mockImageUrl',
 };
 
 test('renders article details correctly', () => {
   render(<ArticleDetails data={testData} />);
 
-  // Test rendering of elements
+  // Check if the title is rendered
   const titleElement = screen.getByText('Test Article');
+
   expect(titleElement).toBeInTheDocument();
 
-  const abstractElement = screen.getByText('This is a test article.');
-  expect(abstractElement).toBeInTheDocument();
+  // Check if the content is rendered
+  const contentElement = screen.getByText(/This is a test article./u);
 
-  const bylineElement = screen.getByText(/creater name and yes hello/);
-  expect(bylineElement).toBeInTheDocument();
+  expect(contentElement).toBeInTheDocument();
 
-  // Test image rendering
-  const thumbnailImage = screen.getByAltText('Thumbnail img');
-  expect(thumbnailImage).toBeInTheDocument();
-  expect(thumbnailImage).toHaveAttribute('src', 'mockImageUrl');
+  // Check if the author and published date are rendered
+  const authorElement = screen.getByText(/Creator Name - Published: 2024-07-09/u);
+
+  expect(authorElement).toBeInTheDocument();
+
+  // Check if the image is rendered with correct alt and src attributes
+  const imageElement = screen.getByAltText('Thumbnail img');
+
+  expect(imageElement).toBeInTheDocument();
+  expect(imageElement).toHaveAttribute('src', 'mockImageUrl');
 });
